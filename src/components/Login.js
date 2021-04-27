@@ -7,42 +7,55 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setAuthedUser, clearAuthedUser} from '../actions/authedUser';
 
 
-const Login = () => {
+const Login = ({location}) => {
 
   const dispatch = useDispatch();
 
   const users = useSelector(state => state.users);
-
+  
   // defining State
   const [userId, setUserId] = useState(null);
-  const [toHome, setToHome] = useState(false)
+  const [toHome, setToHome] = useState(false);
 
   const handleUserChange = e => {
     const userId = e.target.value;
-
-    setUserId((prevState) => {
-      console.log(prevState, 'prevState in func Compo');
-      return {
-        ...prevState,
-        userId
-      }
-    })
+    setUserId(userId)
   }
 
   const handleLogin = () => {
     dispatch(setAuthedUser(userId))
+
+    setToHome(true)
   }
+
+  const {form} = location.state || {form: {pathname: '/dashboard'}};
+  const selected = userId ? userId : -1
+  
+  if(toHome) {
+    return <Redirect to={form} />
+  }
+
+
   return (
-    <>
+    <Fragment>
     <Container fluid>
       <Row className='justify-content-md-center p-3'>
         <Col xs lg="2">
           <h4>Please Sign In</h4>
           <form>
           <div className="form-group">
-            <label htmlFor="select user">Select User</label>
-            <select id="login-select" onChange={e => handleUserChange(e)}>
-              
+            <select value={selected} onChange={e => handleUserChange(e)}>
+              <option disabled value='-1'>Select User...</option>
+              {
+                Object.keys(users).map(key => {
+                  return (
+                    <option value={users[key].id} key={key}>
+                      {users[key].name}
+                    </option>
+                  )
+                })
+              }
+
             </select>
           </div>
           </form>
@@ -50,7 +63,7 @@ const Login = () => {
       </Col>
     </Row>
   </Container>
-  </>
+  </Fragment>
   )
 }
 
