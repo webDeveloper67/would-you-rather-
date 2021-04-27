@@ -10,6 +10,9 @@ import HeaderScreen from '../screen/HeaderScreen'
 import NewQuestion from './NewQuestion';
 import NotFound from './NotFound';
 
+// Utils
+import ProtectedRoute from '../utils/protedtedRoute';
+
 // Redux
 import { useDispatch} from 'react-redux';
 import {handleInitialData} from '../actions/shared'
@@ -27,7 +30,7 @@ const App = () => {
       <HeaderScreen />
       <Switch>
         <Route path='/' exact component={Login} />
-        <Route path='/dashboard' component={Dashboard} />
+        <ProtectedRoute path='/dashboard' component={Dashboard} />
         <Route path='/add' component={NewQuestion} />
         <Route path='/question/:id' component={QuestionDetail} />
         <Route path='/leaderboard' component={LeaderBoard} />

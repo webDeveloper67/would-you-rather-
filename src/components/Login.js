@@ -1,6 +1,6 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, useEffect} from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
-import {Redirect, withRouter} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,10 +24,13 @@ const Login = ({location}) => {
 
   const handleLogin = () => {
     dispatch(setAuthedUser(userId))
-
     setToHome(true)
   }
 
+  useEffect(() => {
+    dispatch(clearAuthedUser())
+  }, [dispatch])
+  
   const {form} = location.state || {form: {pathname: '/dashboard'}};
   const selected = userId ? userId : -1
   
@@ -39,10 +42,9 @@ const Login = ({location}) => {
   return (
     <Fragment>
     <Container fluid>
-      <Row className='justify-content-md-center p-3'>
-        <Col xs lg="2">
+      <Row className='justify-content-center p-3'>
+        <Col xs lg="6" className='text-center'>
           <h4>Please Sign In</h4>
-          <form>
           <div className="form-group">
             <select value={selected} onChange={e => handleUserChange(e)}>
               <option disabled value='-1'>Select User...</option>
@@ -58,7 +60,6 @@ const Login = ({location}) => {
 
             </select>
           </div>
-          </form>
           <Button disabled={userId === null} onClick={e => handleLogin(e)} variant="primary">Login</Button>
       </Col>
     </Row>
