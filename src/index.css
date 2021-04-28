@@ -1,3 +1,45 @@
 .masthead .masthead-avatar {
   width: 15rem;
 }
+
+.tile-item {
+  background-color: #c0392b;
+}
+
+.question-detail {
+  background-color: #bdc3c7;
+}
+
+.option {
+  margin: 5px 0;
+  cursor: pointer;
+}
+.option-selected {
+  color: #c1571A;
+}
+
+.option-container {
+  margin: 10px;
+  border-radius: 6px;
+  background: #eee;
+  padding: 10px;
+  border: 1px solid #c2c2c2;
+  position: relative;
+}
+
+.option-container.selected {
+  border-color: transparent;
+  color: #fff;
+  background: #c1571A;
+}
+
+.your-vote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+.option-container.selected .your-vote {
+  display: block;
+}

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import Question from './Question';
 // Redux
 import {useSelector} from 'react-redux';
 
 // React Bootstrap
 import {ButtonGroup, Button, Container, Row, Col, CardGroup, Card} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
 
 const Dashboard = () => {
   const [showAnswered, setShowAnswered] = useState(false);
@@ -38,14 +38,14 @@ const Dashboard = () => {
         </Col>
       </Row>
       <Row className='justify-content-center'>
-        <Col md lg={12}>
+        <Col md lg={6}>
         <CardGroup>
         {
           sortedQuestions.map((question) => (
             <Card key={question.id}>
-              <LinkContainer to={`question/${question['id']}`}>
-                <Question id={question.id} />
-              </LinkContainer>
+                <Link to={`question/${question['id']}`}>
+                  <Question id={question.id} />
+                </Link>
             </Card>
           ))
         }

@@ -31,11 +31,10 @@ const App = () => {
       <Switch>
         <Route path='/' exact component={Login} />
         <ProtectedRoute path='/dashboard' component={Dashboard} />
-        <Route path='/add' component={NewQuestion} />
-        <Route path='/question/:id' component={QuestionDetail} />
-        <Route path='/leaderboard' component={LeaderBoard} />
+        <ProtectedRoute path='/add' component={NewQuestion} />
+        <ProtectedRoute path='/question/:id' component={QuestionDetail} />
+        <ProtectedRoute path='/leaderboard' component={LeaderBoard} />
         <Route path='/not-found' component={NotFound} />
-
       </Switch>
     </Router>
   );
