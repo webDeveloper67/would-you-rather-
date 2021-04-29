@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, withRouter} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
@@ -9,10 +9,10 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
       return (
         authedUser
         ? <Component {...props} />
-        : <Redirect to='/' />
+        : <Redirect to={{ pathname: '/', state: { form: props.location } }} />
       )}
     } />
   );
 }
 
-export default ProtectedRoute;
+export default withRouter(ProtectedRoute);

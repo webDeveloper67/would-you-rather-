@@ -8,7 +8,7 @@ import {setAuthedUser, clearAuthedUser} from '../actions/authedUser';
 
 
 const Login = ({location}) => {
-
+  console.log(location.state)
   const dispatch = useDispatch();
 
   const users = useSelector(state => state.users);
