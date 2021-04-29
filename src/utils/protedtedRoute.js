@@ -7,9 +7,9 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={(props) => {
       return (
-        authedUser
+        authedUser 
         ? <Component {...props} />
-        : <Redirect to={{ pathname: '/', state: { form: props.location } }} />
+        : <Redirect to={{pathname: '/', state: { form: props.location }} } />
       )}
     } />
   );
