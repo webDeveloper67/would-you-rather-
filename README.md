@@ -11,13 +11,15 @@ In order to be able to use it, You first need to run `npm install`. After that y
 ### `npm install`
 Running this command, will install all the dependencies necessary for this project to work.
 
-
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
+### `Technology used in this project are:`
+1. React
+2. Redux
 
 
 
