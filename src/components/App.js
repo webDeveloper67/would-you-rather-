@@ -29,12 +29,12 @@ const App = () => {
       <NavScreen />
       <HeaderScreen />
       <Switch>
-        <Route path='/' exact component={Login} />
+        <Route path="/" exact component={Login} />
         <ProtectedRoute path='/dashboard' component={Dashboard} />
         <ProtectedRoute path='/add' component={NewQuestion} />
         <ProtectedRoute path='/question/:id' component={QuestionDetail} />
         <ProtectedRoute path='/leaderboard' component={LeaderBoard} />
-        <Route path='/not-found' component={NotFound} />
+        <Route path='*' exact={true} component={NotFound} />
       </Switch>
     </Router>
   );

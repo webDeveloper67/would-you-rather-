@@ -8,7 +8,7 @@ import {setAuthedUser, clearAuthedUser} from '../actions/authedUser';
 
 
 const Login = ({location}) => {
-  console.log(location.state, 'location.state')
+  
   const dispatch = useDispatch();
 
   const users = useSelector(state => state.users);
@@ -31,11 +31,12 @@ const Login = ({location}) => {
     dispatch(clearAuthedUser())
   }, [dispatch])
   
-  const {form} = location.state || {form: {pathname: '/dashboard'}};
+  const { from } = location.state || { from: { pathname: '/dashboard'}}
+  
   const selected = userId ? userId : -1
   
   if(toHome) {
-    return <Redirect to={form} />
+    return <Redirect to={from} />
   }
 
 
